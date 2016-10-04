@@ -21,9 +21,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :c6701 do |c6701|
     # uncomment the line below to set up the ambari dev environment
     # c6701.vm.provision :shell, :path => "dev-bootstrap.sh"
-    c6701.vm.provider :virtualbox do |vb|
-      vb.customize ["modifyvm", :id, "--memory", 10240]
-    end
     c6701.vm.provision :shell, :path => "bootstrap-ambari.sh"
     c6701.vm.hostname = "c6701.ambari.apache.org"
     c6701.vm.network :private_network, ip: "192.168.67.101"
